@@ -45,8 +45,8 @@ public class CompraService {
 		try {
 			Compra entity = compraRepository.getOne(id);
 			if (entity.getCompraStatus().getCode() == 1) {
-			updateData(entity, compra);
-			return compraRepository.save(entity);
+				updateData(entity, compra);
+				return compraRepository.save(entity);
 			} else
 				throw new DatabaseException("Não é possível editar uma compra com o status 'Aprovado'."); // TODO
 		} catch (EntityNotFoundException e) {
@@ -54,23 +54,13 @@ public class CompraService {
 		}
 	}
 
-	public void delete(Long id, Compra compra) {
-		try {
-			compraRepository.deleteById(id);
-		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException(id);
-		} catch (DataIntegrityViolationException e) {
-			throw new DatabaseException(e.getMessage());
-		}
-	}
-	
 	public void delete(Long id) {
 		try {
 			compraRepository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
 			throw new ResourceNotFoundException(id);
 		} catch(DataIntegrityViolationException e) {
-			throw new DatabaseException(e.getMessage());
+			throw new DatabaseException("");
 		}
 		
 	}

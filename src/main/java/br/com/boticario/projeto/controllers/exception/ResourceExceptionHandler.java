@@ -25,7 +25,8 @@ public class ResourceExceptionHandler{
 	}
 	
 	@ExceptionHandler(DatabaseException.class)
-	public ResponseEntity<StandardError> dataBase(DatabaseException e, HttpServletRequest request, String error){
+	public ResponseEntity<StandardError> dataBase(DatabaseException e, HttpServletRequest request){
+		String error = "data base error";
 		HttpStatus status = HttpStatus.BAD_REQUEST;
 		StandardError err = new StandardError(Instant.now(), status.value(),error, e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(err);
