@@ -10,11 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="tb_revendedor")
+@Table(name="tb_revendedor", uniqueConstraints = {@UniqueConstraint(name = "cpf", columnNames = "cpf")})
 public class Revendedor implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -23,7 +27,9 @@ public class Revendedor implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	@CPF
 	private String cpf;
+	@Email
 	private String email;
 	private String senha;
 

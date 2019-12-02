@@ -2,11 +2,8 @@ package br.com.boticario.projeto.entities.enums;
 
 public enum CompraStatus {
 	
-	WAITING_PAYMENT(1),
-	PAID(2),
-	SHIPPED(3),
-	DELIVERED(4),
-	CANCELED(5);
+	EM_VALIDAÇÃO(1),
+	APROVADO(2);
 	
 	private int code;
 	

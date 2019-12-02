@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.boticario.projeto.entities.enums.CompraStatus;
 
@@ -31,9 +32,10 @@ public class Compra implements Serializable{
 	private Instant data;
 	
 	@ManyToOne
-	@JoinColumn(name="revendedor_cpf")
+	@JoinColumn(name="revendedor_cpf", referencedColumnName = "cpf")
 	private Revendedor revendedor;
 	
+	@JsonIgnore
 	private Integer compraStatus;
 
 	public Compra() {}
@@ -72,27 +74,19 @@ public class Compra implements Serializable{
 		this.data = data;
 	}
 
-	public Revendedor getRevendedor() {
-		return revendedor;
+	public String getRevendedor() {
+		return revendedor.getCpf();
 	}
 
 	public void setRevendedor(Revendedor revendedor) {
 		this.revendedor = revendedor;
 	}
 
-	public Integer getCompraStatus() {
-		return compraStatus;
-	}
-
-	public void setCompraStatus(Integer compraStatus) {
-		this.compraStatus = compraStatus;
-	}
-
 	public Long getId() {
 		return id;
 	}
 
-	public CompraStatus getOrderStatus() {
+	public CompraStatus getCompraStatus() {
 		return CompraStatus.valueOf(compraStatus);
 	}
 
