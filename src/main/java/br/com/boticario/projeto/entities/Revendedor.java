@@ -17,6 +17,8 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.boticario.projeto.entities.enums.StatusRevendedor;
+
 @Entity
 @Table(name="tb_revendedor", uniqueConstraints = {@UniqueConstraint(name = "cpf", columnNames = "cpf")})
 public class Revendedor implements Serializable{
@@ -32,6 +34,9 @@ public class Revendedor implements Serializable{
 	@Email
 	private String email;
 	private String senha;
+	
+	@JsonIgnore
+	private Integer statusPerfilRevendedor;
 
 	@OneToMany(mappedBy="revendedor")
 	@JsonIgnore
@@ -39,13 +44,14 @@ public class Revendedor implements Serializable{
 	
 	public Revendedor() {}
 	
-	public Revendedor(Long id, String nome, String cpf, String email, String senha) {
+	public Revendedor(Long id, String nome, String cpf, String email, String senha, Integer statusPerfilRevendedor) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
 		this.senha = senha;
+		this.statusPerfilRevendedor = statusPerfilRevendedor;
 	}
 
 	public String getNome() {
@@ -92,6 +98,16 @@ public class Revendedor implements Serializable{
 		return id;
 	}
 
+	public StatusRevendedor getStatusPerfilRevendedor() {
+		return StatusRevendedor.valueOf(statusPerfilRevendedor);
+	}
+
+	public void setStatusPerfilRevendedor(StatusRevendedor statusPerfilRevendedor) {
+		if( statusPerfilRevendedor != null) {
+			this.statusPerfilRevendedor = statusPerfilRevendedor.getCode();
+		}
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

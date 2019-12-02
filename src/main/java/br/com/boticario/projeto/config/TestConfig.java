@@ -29,8 +29,8 @@ public class TestConfig implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		
-		Revendedor u1 = new Revendedor(null, "Joquina", "04587997005", "joaquina@joaquina.com", Util.criptografarSenha("123489"));
-		Revendedor u2 = new Revendedor(null, "Francisco", "29892548035", "Francisco@Francisco.com", Util.criptografarSenha("Francisco234"));
+		Revendedor u1 = new Revendedor(null, "Joquina", "04587997005", "joaquina@joaquina.com", Util.criptografarSenha("123489"), 1);
+		Revendedor u2 = new Revendedor(null, "Francisco", "29892548035", "Francisco@Francisco.com", Util.criptografarSenha("Francisco234"), 1);
 		
 		revendedorRepository.saveAll(Arrays.asList(u1,u2));
 		

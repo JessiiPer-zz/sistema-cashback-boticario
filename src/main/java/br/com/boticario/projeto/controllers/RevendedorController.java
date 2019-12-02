@@ -8,6 +8,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,10 +33,23 @@ public class RevendedorController {
 		
 	}
 	
+	@GetMapping(value="/{id}")
+	public ResponseEntity<Revendedor> findById(@PathVariable Long id){
+		Revendedor revendedor = revendedorService.findById(id);
+		return ResponseEntity.ok(revendedor);
+	}
+	
 	@PostMapping
 	public ResponseEntity<Revendedor> insert(@RequestBody Revendedor user) throws NoSuchAlgorithmException, UnsupportedEncodingException{
 		user = revendedorService.insert(user);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
 		return ResponseEntity.created(uri).body(user);
 	}
+	
+	@PatchMapping(value="/{id}")
+	public ResponseEntity<Void> desativarPerfilRevendedor(@PathVariable Long id){
+		revendedorService.inativarRevendedor(id);
+		return ResponseEntity.noContent().build();
+	}
+	
 }
