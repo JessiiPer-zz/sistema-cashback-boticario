@@ -1,7 +1,7 @@
 package br.com.boticario.projeto.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,9 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.boticario.projeto.entities.enums.CompraStatus;
 
@@ -26,10 +30,12 @@ public class Compra implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String codigo;
+	@NotNull
 	private Double valor;
 	
+	@Temporal(TemporalType.DATE)
 	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
-	private Instant data;
+	private Date data;
 	
 	@ManyToOne
 	@JoinColumn(name="revendedor_cpf", referencedColumnName = "cpf")
@@ -37,10 +43,16 @@ public class Compra implements Serializable{
 	
 	@JsonIgnore
 	private Integer compraStatus;
+	
+	@JsonProperty("porcentagem_cashback")
+	private Double porcentagemCashback;
+	
+	@JsonProperty("valor_cashback")
+	private Double valorCashback;
 
 	public Compra() {}
 	
-	public Compra(Long id, String codigo, Double valor, Instant data, CompraStatus compraStatus, Revendedor revendedor) {
+	public Compra(Long id, String codigo, Double valor, Date data, CompraStatus compraStatus, Double porcentagemCashback, Double valorCashback, Revendedor revendedor) {
 		super();
 		this.id = id;
 		this.codigo = codigo;
@@ -66,11 +78,11 @@ public class Compra implements Serializable{
 		this.valor = valor;
 	}
 
-	public Instant getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(Instant data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
@@ -94,6 +106,22 @@ public class Compra implements Serializable{
 		if( compraStatus != null) {
 			this.compraStatus = compraStatus.getCode();
 		}
+	}
+	
+	public Double getPorcentagemCashback() {
+		return porcentagemCashback;
+	}
+
+	public void setPorcentagemCashback(Double porcentagemCashback) {
+		this.porcentagemCashback = porcentagemCashback;
+	}
+
+	public Double getValorCashback() {
+		return valorCashback;
+	}
+
+	public void setValorCashback(Double valorCashback) {
+		this.valorCashback = valorCashback;
 	}
 
 	@Override

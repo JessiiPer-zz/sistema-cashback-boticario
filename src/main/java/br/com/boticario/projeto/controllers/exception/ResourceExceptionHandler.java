@@ -29,9 +29,8 @@ public class ResourceExceptionHandler{
 	
 	@ExceptionHandler(DatabaseException.class)
 	public ResponseEntity<ErrorResponse> dataBase(DatabaseException e, HttpServletRequest request){
-		String error = "Erro Interno";
 		HttpStatus status = HttpStatus.BAD_REQUEST;
-		ErrorResponse err = new ErrorResponse(Instant.now(), status.value(),error, null, request.getRequestURI());
+		ErrorResponse err = new ErrorResponse(Instant.now(), status.value(),e.getMessage(), null, request.getRequestURI());
 		return ResponseEntity.status(status).body(err);
 	}
 	

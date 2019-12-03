@@ -1,18 +1,20 @@
 package br.com.boticario.projeto.services;
 
-import java.time.Instant;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import br.com.boticario.projeto.dto.CompraDTO;
 import br.com.boticario.projeto.entities.Compra;
 import br.com.boticario.projeto.entities.enums.CompraStatus;
+import br.com.boticario.projeto.mappers.CompraMapper;
 import br.com.boticario.projeto.repositories.CompraRepository;
 import br.com.boticario.projeto.services.exception.DatabaseException;
 import br.com.boticario.projeto.services.exception.ResourceNotFoundException;
@@ -22,7 +24,15 @@ public class CompraService {
 
 	@Autowired
 	private CompraRepository compraRepository;
+	
+	@Autowired
+	private CompraMapper mapper;
+	
+	private Double porcentagem;
+	private Double valorCashback;
 
+	Date date = new Date(System.currentTimeMillis());
+	
 	public List<Compra> findAll() {
 		return compraRepository.findAll();
 	}
@@ -33,12 +43,15 @@ public class CompraService {
 		return user.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 
-	public Compra insert(Compra compra) {
+	public CompraDTO insert(Compra compra) throws ParseException {
 		CompraStatus aux = CompraStatus.EM_VALIDAÇÃO;
 		aux = compra.getRevendedor() != "153.509.460-56" ? CompraStatus.EM_VALIDAÇÃO : CompraStatus.APROVADO;
+		compra.setValorCashback(calculaValorCashback(compra.getValor()));
+		compra.setPorcentagemCashback(getPorcentagem());
 		compra.setCompraStatus(aux);
-		compra.setData(Instant.now());
-		return compraRepository.save(compra);
+		compra.setData(date);
+		Compra entity = compraRepository.save(compra);
+		return mapper.compraEntityParaDTO(entity);
 	}
 
 	public Compra update(Long id, Compra compra) {
@@ -48,7 +61,7 @@ public class CompraService {
 				updateData(entity, compra);
 				return compraRepository.save(entity);
 			} else
-				throw new DatabaseException("Não é possível editar uma compra com o status 'Aprovado'."); // TODO
+				throw new DatabaseException("Não é possível editar uma compra com o status 'Aprovado'.");
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException(id);
 		}
@@ -56,11 +69,13 @@ public class CompraService {
 
 	public void delete(Long id) {
 		try {
-			compraRepository.deleteById(id);
+			Optional<Compra> compra = compraRepository.findById(id);
+			if(compra.get().getCompraStatus().getCode() == 1) {
+				compraRepository.deleteById(id);
+			}else throw new DatabaseException("Não é possível excluir uma compra com o status 'Aprovado'."); 
+		
 		} catch (EmptyResultDataAccessException e) {
 			throw new ResourceNotFoundException(id);
-		} catch(DataIntegrityViolationException e) {
-			throw new DatabaseException("");
 		}
 		
 	}
@@ -68,5 +83,35 @@ public class CompraService {
 	private void updateData(Compra entity, Compra compra) {
 		entity.setCodigo(compra.getCodigo());
 		entity.setValor(compra.getValor());
+	}
+	
+	private Double calculaValorCashback(Double valor) {
+		if(valor <= 1000) {
+			setPorcentagem(0.1);
+			calculaCashback(valor,getPorcentagem());
+			return valorCashback;
+		}else if(valor > 1000 && valor <= 1500) {
+			porcentagem = 0.15;
+			calculaCashback(valor,porcentagem);
+			return valorCashback;
+		} else {
+			porcentagem = 0.15;
+			calculaCashback(valor,porcentagem);
+			return valorCashback;
+		}
+		
+	}
+	
+	private Double calculaCashback(Double valor, Double porcentagem) {
+		valorCashback =  valor*porcentagem;
+		return valorCashback;
+	}
+
+	public Double getPorcentagem() {
+		return porcentagem;
+	}
+
+	public void setPorcentagem(Double porcentagem) {
+		this.porcentagem = porcentagem;
 	}
 }

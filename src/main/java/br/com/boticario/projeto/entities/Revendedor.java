@@ -33,6 +33,7 @@ public class Revendedor implements Serializable{
 	@NotBlank(message = "Nome é de preenchimento obrigatório")
 	private String nome;
 	@CPF(message = "CPF inválido")
+	@NotBlank
 	private String cpf;
 	@Email
 	@NotBlank(message = "E-mail é de preenchimento obrigatório")
