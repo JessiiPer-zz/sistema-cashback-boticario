@@ -5,6 +5,8 @@ import java.net.URI;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +42,7 @@ public class RevendedorController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Revendedor> insert(@RequestBody Revendedor user) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+	public ResponseEntity<Revendedor> insert(@RequestBody @Valid Revendedor user) throws NoSuchAlgorithmException, UnsupportedEncodingException{
 		user = revendedorService.insert(user);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
 		return ResponseEntity.created(uri).body(user);

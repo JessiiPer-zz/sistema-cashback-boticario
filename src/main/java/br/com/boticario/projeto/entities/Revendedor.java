@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -28,11 +30,15 @@ public class Revendedor implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	@NotBlank(message = "Nome é de preenchimento obrigatório")
 	private String nome;
-	@CPF
+	@CPF(message = "CPF inválido")
 	private String cpf;
 	@Email
+	@NotBlank(message = "E-mail é de preenchimento obrigatório")
 	private String email;
+	@NotBlank
+	@Size(min = 8, max = 100, message = "A senha é de preenchimento obrigatório e deve conter no mínimo 8 caracteres")
 	private String senha;
 	
 	@JsonIgnore
