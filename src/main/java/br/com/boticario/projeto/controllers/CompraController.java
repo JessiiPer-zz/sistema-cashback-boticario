@@ -8,6 +8,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,9 +32,8 @@ public class CompraController {
 	private CompraService compraService;
 	
 	@GetMapping
-	public ResponseEntity<List<Compra>> findAll(){
-		List<Compra> list = compraService.findAll();
-		return ResponseEntity.ok(list);
+	public Page<CompraDTO> listarCompras(Pageable page) throws ParseException{
+		return compraService.listaCompras(page);
 		
 	}
 	
@@ -44,9 +45,8 @@ public class CompraController {
 
 	
 	@PostMapping
-	public ResponseEntity<CompraDTO> insert(@Valid @RequestBody Compra compra) throws NoSuchAlgorithmException, UnsupportedEncodingException, ParseException{
-		CompraDTO response = compraService.insert(compra);
-		return ResponseEntity.ok().body(response);
+	public List<CompraDTO> insert(@Valid @RequestBody List<Compra> compra) throws NoSuchAlgorithmException, UnsupportedEncodingException, ParseException{
+		return compraService.insert(compra);
 	}
 	
 	@PutMapping(value="/{id}")

@@ -1,6 +1,7 @@
 package br.com.boticario.projeto.services;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +10,9 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.boticario.projeto.dto.CompraDTO;
@@ -33,8 +37,23 @@ public class CompraService {
 
 	Date date = new Date(System.currentTimeMillis());
 	
-	public List<Compra> findAll() {
-		return compraRepository.findAll();
+	public Page<CompraDTO> listaCompras(Pageable pageable) throws ParseException {
+		
+		List<CompraDTO> response = new ArrayList<>();
+		CompraMapper mapper = new CompraMapper();
+		
+		List<Compra> lista = compraRepository.findAll();
+		
+		for(Compra obj : lista) {
+			CompraDTO dto = new CompraDTO();
+			response.add(mapper.compraEntityParaDTO(obj, dto));
+		}
+		
+		int start = (int) pageable.getOffset();
+		int end = (start + pageable.getPageSize()) > response.size() ? response.size() : (start + pageable.getPageSize());
+		Page<CompraDTO> pages = new PageImpl<CompraDTO>(response.subList(start, end), pageable, response.size());
+		
+		return pages;
 	}
 
 	public Compra findById(Long id) {
@@ -43,15 +62,25 @@ public class CompraService {
 		return user.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 
-	public CompraDTO insert(Compra compra) throws ParseException {
-		CompraStatus aux = CompraStatus.EM_VALIDAÇÃO;
-		aux = compra.getRevendedor() != "153.509.460-56" ? CompraStatus.EM_VALIDAÇÃO : CompraStatus.APROVADO;
-		compra.setValorCashback(calculaValorCashback(compra.getValor()));
-		compra.setPorcentagemCashback(getPorcentagem());
-		compra.setCompraStatus(aux);
-		compra.setData(date);
-		Compra entity = compraRepository.save(compra);
-		return mapper.compraEntityParaDTO(entity);
+	public List<CompraDTO> insert(List<Compra> compra) throws ParseException {
+		
+		List<CompraDTO> response = new ArrayList<>();
+		
+		for(Compra obj : compra) {
+			CompraDTO dto = new CompraDTO();
+			CompraStatus aux = CompraStatus.EM_VALIDAÇÃO;
+			aux = obj.getRevendedor() != "153.509.460-56" ? CompraStatus.EM_VALIDAÇÃO : CompraStatus.APROVADO;
+			obj.setValorCashback(calculaValorCashback(obj.getValor()));
+			obj.setPorcentagemCashback(getPorcentagem());
+			obj.setCompraStatus(aux);
+			obj.setData(date);
+			
+			Compra entity = compraRepository.save(obj);
+			response.add(mapper.compraEntityParaDTO(entity, dto));
+						
+		}
+		
+		return response;
 	}
 
 	public Compra update(Long id, Compra compra) {

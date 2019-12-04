@@ -3,8 +3,11 @@ package br.com.boticario.projeto.util;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.swing.text.MaskFormatter;
 
 public class Util {
 
@@ -25,6 +28,13 @@ public class Util {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		String strDate = formatter.format(date);
 		return strDate;
+	}
+	
+	public static String formataCnpj(String cpf) throws ParseException {
+        MaskFormatter mask = new MaskFormatter("###.###.###-##");
+        mask.setValueContainsLiteralCharacters(false);
+	        
+	    return mask.valueToString(cpf);
 	}
 
 }

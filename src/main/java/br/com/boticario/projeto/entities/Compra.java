@@ -59,6 +59,8 @@ public class Compra implements Serializable{
 		this.valor = valor;
 		this.data = data;
 		setCompraStatus(compraStatus);
+		this.porcentagemCashback = porcentagemCashback;
+		this.valorCashback = valorCashback;
 		this.revendedor = revendedor;
 	}
 

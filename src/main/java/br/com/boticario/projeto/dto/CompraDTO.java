@@ -20,8 +20,11 @@ public class CompraDTO implements Serializable {
 	@JsonProperty("porcentagem_cashback")
 	private String porcentagemCashback;
 	
-	@JsonProperty("valorCashback")
+	@JsonProperty("valor_cashback")
 	private String valorCashback;
+	
+	@JsonProperty("status_compra")
+	private String statusCompra;
 
 	public Long getId() {
 		return id;
@@ -77,6 +80,14 @@ public class CompraDTO implements Serializable {
 
 	public void setValorCashback(String valorCashback) {
 		this.valorCashback = valorCashback;
+	}
+
+	public String getStatusCompra() {
+		return statusCompra;
+	}
+
+	public void setStatusCompra(String statusCompra) {
+		this.statusCompra = statusCompra;
 	}
 
 }
