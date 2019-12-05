@@ -14,6 +14,8 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.fasterxml.jackson.core.JsonParseException;
+
 import br.com.boticario.projeto.services.exception.DatabaseException;
 import br.com.boticario.projeto.services.exception.ResourceNotFoundException;
 
@@ -55,6 +57,14 @@ public class ResourceExceptionHandler{
 	public ResponseEntity<ErrorResponse> dataBase(MissingServletRequestParameterException e, HttpServletRequest request){
 		HttpStatus status = HttpStatus.BAD_REQUEST;
 		String erro = "CPF é um campo obrigatório";
+		ErrorResponse err = new ErrorResponse(Instant.now(), status.value(),erro, null, request.getRequestURI());
+		return ResponseEntity.status(status).body(err);
+	}
+
+	@ExceptionHandler(JsonParseException.class)
+	public ResponseEntity<ErrorResponse> dataBase(JsonParseException e, HttpServletRequest request){
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		String erro = "Json incorreto.";
 		ErrorResponse err = new ErrorResponse(Instant.now(), status.value(),erro, null, request.getRequestURI());
 		return ResponseEntity.status(status).body(err);
 	}

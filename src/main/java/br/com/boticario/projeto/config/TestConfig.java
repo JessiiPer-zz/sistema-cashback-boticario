@@ -13,7 +13,6 @@ import br.com.boticario.projeto.entities.Revendedor;
 import br.com.boticario.projeto.entities.enums.CompraStatus;
 import br.com.boticario.projeto.repositories.CompraRepository;
 import br.com.boticario.projeto.repositories.RevendedorRepository;
-import br.com.boticario.projeto.util.Util;
 
 @Configuration
 @Profile("test")
@@ -31,8 +30,8 @@ public class TestConfig implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		
-		Revendedor u1 = new Revendedor(null, "Joquina", "04587997005", "joaquina@joaquina.com", Util.criptografarSenha("123489910"), 1);
-		Revendedor u2 = new Revendedor(null, "Francisco", "29892548035", "Francisco@Francisco.com", Util.criptografarSenha("Francisco234"), 1);
+		Revendedor u1 = new Revendedor(null, "Joquina", "04587997005", "joaquina@joaquina.com", "123489910", 1);
+		Revendedor u2 = new Revendedor(null, "Francisco", "29892548035", "Francisco@Francisco.com", "Francisco234", 1);
 		
 		revendedorRepository.saveAll(Arrays.asList(u1,u2));
 		

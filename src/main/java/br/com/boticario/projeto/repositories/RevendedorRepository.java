@@ -8,4 +8,6 @@ import br.com.boticario.projeto.entities.Revendedor;
 @Repository
 public interface RevendedorRepository extends JpaRepository<Revendedor,Long> {
 
+	public Revendedor findByEmail(String email);
+
 }

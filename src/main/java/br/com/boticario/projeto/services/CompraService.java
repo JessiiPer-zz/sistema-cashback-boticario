@@ -17,9 +17,11 @@ import org.springframework.stereotype.Service;
 
 import br.com.boticario.projeto.dto.CompraDTO;
 import br.com.boticario.projeto.entities.Compra;
+import br.com.boticario.projeto.entities.Revendedor;
 import br.com.boticario.projeto.entities.enums.CompraStatus;
 import br.com.boticario.projeto.mappers.CompraMapper;
 import br.com.boticario.projeto.repositories.CompraRepository;
+import br.com.boticario.projeto.repositories.RevendedorRepository;
 import br.com.boticario.projeto.services.exception.DatabaseException;
 import br.com.boticario.projeto.services.exception.ResourceNotFoundException;
 
@@ -30,6 +32,9 @@ public class CompraService {
 	private CompraRepository compraRepository;
 	
 	@Autowired
+	private RevendedorRepository revendedorRepository;
+	
+	@Autowired
 	private CompraMapper mapper;
 	
 	private Double porcentagem;
@@ -37,12 +42,14 @@ public class CompraService {
 
 	Date date = new Date(System.currentTimeMillis());
 	
-	public Page<CompraDTO> listaCompras(Pageable pageable) throws ParseException {
+	public Page<CompraDTO> listaCompras(Pageable pageable, String email) throws ParseException {
+		
+		Revendedor revendedor = revendedorRepository.findByEmail(email);
 		
 		List<CompraDTO> response = new ArrayList<>();
 		CompraMapper mapper = new CompraMapper();
 		
-		List<Compra> lista = compraRepository.findAll();
+		List<Compra> lista = compraRepository.findByRevendedor_cpf(revendedor.getCpf());
 		
 		for(Compra obj : lista) {
 			CompraDTO dto = new CompraDTO();

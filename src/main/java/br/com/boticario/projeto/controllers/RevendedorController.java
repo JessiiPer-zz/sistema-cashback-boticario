@@ -29,9 +29,11 @@ public class RevendedorController {
 	private RevendedorService revendedorService;
 	
 	@GetMapping
-	public ResponseEntity<List<Revendedor>> findAll(){
+	public ResponseEntity<List<Revendedor>> findAll(){//@RequestHeader(value="Authorization", required = true) String token){
+		
 		List<Revendedor> list = revendedorService.findAll();
 		return ResponseEntity.ok(list);
+		
 		
 	}
 	
@@ -41,7 +43,7 @@ public class RevendedorController {
 		return ResponseEntity.ok(revendedor);
 	}
 	
-	@PostMapping
+	@PostMapping("/inserir")
 	public ResponseEntity<Revendedor> insert(@RequestBody @Valid Revendedor user) throws NoSuchAlgorithmException, UnsupportedEncodingException{
 		user = revendedorService.insert(user);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
@@ -53,5 +55,6 @@ public class RevendedorController {
 		revendedorService.inativarRevendedor(id);
 		return ResponseEntity.noContent().build();
 	}
+	
 	
 }
