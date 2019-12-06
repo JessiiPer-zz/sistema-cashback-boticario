@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.swing.text.MaskFormatter;
 
@@ -24,17 +24,21 @@ public class Util {
 		return senha;
 	}
 
-	public static String converterDataParaString(Date date) {
+	public static String converterDataParaString(Calendar date) {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		String strDate = formatter.format(date);
+		String strDate = formatter.format(date.getTime());
 		return strDate;
 	}
 	
 	public static String formataCnpj(String cpf) throws ParseException {
-        MaskFormatter mask = new MaskFormatter("###.###.###-##");
-        mask.setValueContainsLiteralCharacters(false);
-	        
-	    return mask.valueToString(cpf);
+		if(!cpf.contains(".")) {
+			 MaskFormatter mask = new MaskFormatter("###.###.###-##");
+		        mask.setValueContainsLiteralCharacters(false);
+			        
+			    return mask.valueToString(cpf);
+		}
+       
+		return cpf;
 	}
 
 }

@@ -2,7 +2,7 @@ package br.com.boticario.projeto.services;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,8 +39,10 @@ public class CompraService {
 	
 	private Double porcentagem;
 	private Double valorCashback;
+	
+	
 
-	Date date = new Date(System.currentTimeMillis());
+	Calendar date = Calendar.getInstance();
 	
 	public Page<CompraDTO> listaCompras(Pageable pageable, String email) throws ParseException {
 		
@@ -72,16 +74,19 @@ public class CompraService {
 	public List<CompraDTO> insert(List<Compra> compra) throws ParseException {
 		
 		List<CompraDTO> response = new ArrayList<>();
+		boolean verificaData = false;
 		
 		for(Compra obj : compra) {
 			CompraDTO dto = new CompraDTO();
 			CompraStatus aux = CompraStatus.EM_VALIDAÇÃO;
-			aux = obj.getRevendedor() != "153.509.460-56" ? CompraStatus.EM_VALIDAÇÃO : CompraStatus.APROVADO;
+			aux = "15350946056".equals(obj.getRevendedor().replaceAll("[.-]", "")) ? CompraStatus.APROVADO : CompraStatus.EM_VALIDAÇÃO;
 			obj.setValorCashback(calculaValorCashback(obj.getValor()));
 			obj.setPorcentagemCashback(getPorcentagem());
 			obj.setCompraStatus(aux);
-			obj.setData(date);
-			
+			verificaData = obj.getData() == null? true : false;
+			if(verificaData) {
+				obj.setData(date);
+			}
 			Compra entity = compraRepository.save(obj);
 			response.add(mapper.compraEntityParaDTO(entity, dto));
 						
@@ -91,6 +96,10 @@ public class CompraService {
 	}
 
 	public Compra update(Long id, Compra compra) {
+		
+		if(id!=compra.getId()) {
+			throw new DatabaseException("Id da url é diferente do body");
+		}
 		try {
 			Compra entity = compraRepository.getOne(id);
 			if (entity.getCompraStatus().getCode() == 1) {
@@ -119,6 +128,9 @@ public class CompraService {
 	private void updateData(Compra entity, Compra compra) {
 		entity.setCodigo(compra.getCodigo());
 		entity.setValor(compra.getValor());
+		entity.setValorCashback(calculaValorCashback(compra.getValor()));
+		entity.setPorcentagemCashback(getPorcentagem());
+		
 	}
 	
 	private Double calculaValorCashback(Double valor) {
@@ -131,7 +143,7 @@ public class CompraService {
 			calculaCashback(valor,porcentagem);
 			return valorCashback;
 		} else {
-			porcentagem = 0.15;
+			porcentagem = 0.20;
 			calculaCashback(valor,porcentagem);
 			return valorCashback;
 		}

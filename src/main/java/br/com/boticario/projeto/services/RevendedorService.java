@@ -40,13 +40,13 @@ public class RevendedorService implements UserDetailsService {
 
 	public Revendedor insert(Revendedor revendedor) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		revendedor.setStatusPerfilRevendedor(StatusRevendedor.ATIVO);
-		if (revendedorRepository.findByEmail(revendedor.getEmail()) != null){
-
-            throw new DatabaseException("Email já cadastrado.");
-
-        }
+		Revendedor teste1 = revendedorRepository.findByEmail(revendedor.getEmail());
+		Revendedor teste2 = revendedorRepository.findByCpf(revendedor.getCpf());
+		if(teste1.getStatusPerfilRevendedor().getCode() != 2 || teste2 !=null )
+			 throw new DatabaseException("CPF e/ou E-mail já cadastrado");
 		 String encodedPassword = new BCryptPasswordEncoder().encode(revendedor.getSenha());
 		 revendedor.setSenha(encodedPassword);
+		 revendedor.setCpf(revendedor.getCpf().replaceAll("[.-]", ""));
 		return revendedorRepository.save(revendedor);
 	}
 	
@@ -72,14 +72,6 @@ public class RevendedorService implements UserDetailsService {
 		
 	}
 	
-//	public String login(Login login) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-//		String senha = Util.criptografarSenha(login.getSenha());
-//		Revendedor user =  revendedorRepository.findByEmailAndSenha(login.getEmail(),senha);
-//		if(user != null) {
-//			return "Autenticação OK";
-//		} else throw new DatabaseException("Falha de autenticação");
-//	}
-
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		Revendedor usuario = this.revendedorRepository.findByEmail(email);

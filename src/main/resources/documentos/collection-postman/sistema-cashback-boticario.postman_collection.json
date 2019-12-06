@@ -1,0 +1,403 @@
+{
+	"id": "5b113ed5-b333-f633-2f52-e2680e41a1bd",
+	"name": "sistema-cashback-boticario",
+	"description": "",
+	"order": [
+		"54603ea6-d299-9891-4e32-e22a4fde1540",
+		"8ea7a170-cdda-5d6c-6a58-472662b5c4c5",
+		"c179f655-68f7-8980-5f8a-baa211b297d2",
+		"8e791688-316d-5e16-99ff-07b2c160bf40",
+		"b3fd6031-2982-737c-0bba-62beb8f3e195",
+		"d7592dc1-180a-6f98-454d-f6ddf7044a7b",
+		"240ac44b-23f7-c84c-13a7-0e2c6eed3dc6",
+		"5562579b-02f4-1037-068d-3e12088aba89",
+		"2428511b-49c9-02aa-e861-6a450613e812",
+		"7be3c9b7-a420-4953-cf01-ae901c541dca",
+		"c38c07dc-8dc2-5351-0e89-42fb27920e7f",
+		"9c65ce08-75e0-3611-bd9d-e2b75d94eba3"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1575235069285,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "240ac44b-23f7-c84c-13a7-0e2c6eed3dc6",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXJlemFAZ21haWwuY29tIiwiZXhwIjoxNTc1NjcxMzUzLCJpYXQiOjE1NzU2NTMzNTN9.HsquIkeBolylAyYl06Cq8ULfvtECk1NKeVmDRSmXxmprAo7gogik6mJWHKi4h4cDa9-DMjJMSpOvNtP11RsyZg\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXJlemFAZ21haWwuY29tIiwiZXhwIjoxNTc1NjcxMzUzLCJpYXQiOjE1NzU2NTMzNTN9.HsquIkeBolylAyYl06Cq8ULfvtECk1NKeVmDRSmXxmprAo7gogik6mJWHKi4h4cDa9-DMjJMSpOvNtP11RsyZg",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:4200/compra/2",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575654046277,
+			"name": "FindCompraById",
+			"description": "",
+			"collectionId": "5b113ed5-b333-f633-2f52-e2680e41a1bd",
+			"responses": []
+		},
+		{
+			"id": "2428511b-49c9-02aa-e861-6a450613e812",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyaWNhcmRvQGJvdGljYXJpby5jb20iLCJleHAiOjE1NzU2NzY0OTUsImlhdCI6MTU3NTY1ODQ5NX0.llm1PioRU-m2f7ZQqxPEm2FEd1Brn065oLxWnxg3UPpIFg5bM-smIHmXOg_552sH9FrZTO0LICmf4WOnFWH_HA\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyaWNhcmRvQGJvdGljYXJpby5jb20iLCJleHAiOjE1NzU2NzY0OTUsImlhdCI6MTU3NTY1ODQ5NX0.llm1PioRU-m2f7ZQqxPEm2FEd1Brn065oLxWnxg3UPpIFg5bM-smIHmXOg_552sH9FrZTO0LICmf4WOnFWH_HA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:4200/revendedor/1",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PATCH",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575658896825,
+			"name": "DeleteUser",
+			"description": "",
+			"collectionId": "5b113ed5-b333-f633-2f52-e2680e41a1bd",
+			"responses": []
+		},
+		{
+			"id": "54603ea6-d299-9891-4e32-e22a4fde1540",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:4200/revendedor/inserir",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575658450076,
+			"name": "InsertRevendedor",
+			"description": "",
+			"collectionId": "5b113ed5-b333-f633-2f52-e2680e41a1bd",
+			"responses": [],
+			"rawModeData": "{\r\n\t\"nome\": \"Ricardo\",\r\n\t\"email\": \"ricardo@boticario.com\",\r\n\t\"cpf\": \"153.509.460-56\",\r\n\t\"senha\": \"ricardo123\"\r\n}"
+		},
+		{
+			"id": "5562579b-02f4-1037-068d-3e12088aba89",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyaWNhcmRvQGJvdGljYXJpby5jb20iLCJleHAiOjE1NzU2NzY0OTUsImlhdCI6MTU3NTY1ODQ5NX0.llm1PioRU-m2f7ZQqxPEm2FEd1Brn065oLxWnxg3UPpIFg5bM-smIHmXOg_552sH9FrZTO0LICmf4WOnFWH_HA\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyaWNhcmRvQGJvdGljYXJpby5jb20iLCJleHAiOjE1NzU2NzY0OTUsImlhdCI6MTU3NTY1ODQ5NX0.llm1PioRU-m2f7ZQqxPEm2FEd1Brn065oLxWnxg3UPpIFg5bM-smIHmXOg_552sH9FrZTO0LICmf4WOnFWH_HA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:4200/revendedor/1",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575658583306,
+			"name": "findRevendedorById",
+			"description": "",
+			"collectionId": "5b113ed5-b333-f633-2f52-e2680e41a1bd",
+			"responses": []
+		},
+		{
+			"id": "7be3c9b7-a420-4953-cf01-ae901c541dca",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyaWNhcmRvQGJvdGljYXJpby5jb20iLCJleHAiOjE1NzU2Nzc0MzUsImlhdCI6MTU3NTY1OTQzNX0.5IfsQqn3Qa9dQz40o6GX3U5bwHcZP0WEpiaLahXC8E4lkR_7aWZ4VyNpQuPEmWl4JyapRKvjfddnlKdvxLgA-A\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyaWNhcmRvQGJvdGljYXJpby5jb20iLCJleHAiOjE1NzU2Nzc0MzUsImlhdCI6MTU3NTY1OTQzNX0.5IfsQqn3Qa9dQz40o6GX3U5bwHcZP0WEpiaLahXC8E4lkR_7aWZ4VyNpQuPEmWl4JyapRKvjfddnlKdvxLgA-A",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:4200/compra",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575659541958,
+			"name": "InsertListaCompras",
+			"description": "",
+			"collectionId": "5b113ed5-b333-f633-2f52-e2680e41a1bd",
+			"responses": [],
+			"rawModeData": "[{\n\t\"id\": null,\n\t\"codigo\": \"UD778\",\n\t\"valor\": 2800,\n\t\"data\": \"06/04/2019 19:53:07\",\n\t\"revendedor\": \n\t {\n        \"id\": 2,\n        \"nome\": \"Joaquina\",\n        \"cpf\": \"56021640063\",\n        \"email\": \"joaquina@gil.com\",\n        \"senha\": \"$2a$10$v0JmXnetrcW51KdJEcNYY.n2/OYqkQBrsbT1JVMEMTLk9snQLuMF.\"\n    }\n  \n},\n\n    {\n    \t\"id\": null,\n\t\t\"codigo\": \"JD778\",\n\t\t\"valor\": 150,\n\t\t\"data\": \"06/04/2019 19:53:07\",\n\t\t\"revendedor\": \n\t\t {\n        \"id\": 2,\n        \"nome\": \"Joaquina\",\n        \"cpf\": \"56021640063\",\n        \"email\": \"joaquina@gil.com\",\n        \"senha\": \"$2a$10$v0JmXnetrcW51KdJEcNYY.n2/OYqkQBrsbT1JVMEMTLk9snQLuMF.\"\n    }\n    },\n    \n    {\n    \t\"id\": null,\n\t\t\"codigo\": \"AB778\",\n\t\t\"valor\": 290.00,\n\t\t\"data\": \"06/04/2019 19:53:07\",\n\t\t\"revendedor\": \n\t\t{\n        \"id\": 2,\n        \"nome\": \"Joaquina\",\n        \"cpf\": \"56021640063\",\n        \"email\": \"joaquina@gil.com\",\n        \"senha\": \"$2a$10$v0JmXnetrcW51KdJEcNYY.n2/OYqkQBrsbT1JVMEMTLk9snQLuMF.\"\n    }\n    }]"
+		},
+		{
+			"id": "8e791688-316d-5e16-99ff-07b2c160bf40",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyaWNhcmRvQGJvdGljYXJpby5jb20iLCJleHAiOjE1NzU2NzM1ODMsImlhdCI6MTU3NTY1NTU4M30.Lq98LDEplwJdd-u10fGH-D6Ptz3ilVf-FqN4C7oSvHNJj6BPy57H3AS_BPSrz_LS0OuTuWs7rMK_gUHGcL2C7w\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyaWNhcmRvQGJvdGljYXJpby5jb20iLCJleHAiOjE1NzU2NzM1ODMsImlhdCI6MTU3NTY1NTU4M30.Lq98LDEplwJdd-u10fGH-D6Ptz3ilVf-FqN4C7oSvHNJj6BPy57H3AS_BPSrz_LS0OuTuWs7rMK_gUHGcL2C7w",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:4200/compra",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575658445479,
+			"name": "InsertCompras",
+			"description": "",
+			"collectionId": "5b113ed5-b333-f633-2f52-e2680e41a1bd",
+			"responses": [],
+			"rawModeData": "[{\n\t\"id\": null,\n\t\"codigo\": \"UD778\",\n\t\"valor\": 10000,\n\t\"data\": \"12/06/2019 12:05:23\",\n\t\"revendedor\": \n\t {\n\t\t    \"id\": 4,\n\t\t    \"nome\": \"Ricardo\",\n\t\t    \"cpf\": \"153.509.460-56\",\n\t\t    \"email\": \"ricardo@boticario.com\",\n\t\t    \"senha\": \"$2a$10$e6gxLeSmNmUu6jwIR913Xe2BsHyheRgL0PUbYcmWAFTxIgPRdnrlK\"\n\t}\n\t  \n},\n\n    {\n    \t\"id\": null,\n\t\t\"codigo\": \"JD778\",\n\t\t\"valor\": 1200.00,\n\t\t\"data\": \"12/06/2019 12:05:23\",\n\t\t\"revendedor\": \n\t\t{\n\t\t    \"id\": 4,\n\t\t    \"nome\": \"Ricardo\",\n\t\t    \"cpf\": \"153.509.460-56\",\n\t\t    \"email\": \"ricardo@boticario.com\",\n\t\t    \"senha\": \"$2a$10$e6gxLeSmNmUu6jwIR913Xe2BsHyheRgL0PUbYcmWAFTxIgPRdnrlK\"\n\t\t}\n    },\n    \n    {\n    \t\"id\": null,\n\t\t\"codigo\": \"AB778\",\n\t\t\"valor\": 290.00,\n\t\t\"data\": \"12/06/2019 12:05:23\",\n\t\t\"revendedor\": \n\t\t{\n\t\t    \"id\": 4,\n\t\t    \"nome\": \"Ricardo\",\n\t\t    \"cpf\": \"153.509.460-56\",\n\t\t    \"email\": \"ricardo@boticario.com\",\n\t\t    \"senha\": \"$2a$10$e6gxLeSmNmUu6jwIR913Xe2BsHyheRgL0PUbYcmWAFTxIgPRdnrlK\"\n\t\t}\n\t}\n]"
+		},
+		{
+			"id": "8ea7a170-cdda-5d6c-6a58-472662b5c4c5",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXJlemFAZ21haWwuY29tIiwiZXhwIjoxNTc1NjcxMzUzLCJpYXQiOjE1NzU2NTMzNTN9.HsquIkeBolylAyYl06Cq8ULfvtECk1NKeVmDRSmXxmprAo7gogik6mJWHKi4h4cDa9-DMjJMSpOvNtP11RsyZg\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXJlemFAZ21haWwuY29tIiwiZXhwIjoxNTc1NjcxMzUzLCJpYXQiOjE1NzU2NTMzNTN9.HsquIkeBolylAyYl06Cq8ULfvtECk1NKeVmDRSmXxmprAo7gogik6mJWHKi4h4cDa9-DMjJMSpOvNtP11RsyZg",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:4200/revendedor",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575653555266,
+			"name": "ListAllRevendedor",
+			"description": "",
+			"collectionId": "5b113ed5-b333-f633-2f52-e2680e41a1bd",
+			"responses": []
+		},
+		{
+			"id": "9c65ce08-75e0-3611-bd9d-e2b75d94eba3",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:4200/authenticate",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575658453120,
+			"name": "login",
+			"description": "",
+			"collectionId": "5b113ed5-b333-f633-2f52-e2680e41a1bd",
+			"responses": [],
+			"rawModeData": "{\n\t\"email\": \"ricardo@boticario.com\",\n\t\"senha\": \"ricardo123\"\n}"
+		},
+		{
+			"id": "b3fd6031-2982-737c-0bba-62beb8f3e195",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXJlemFAZ21haWwuY29tIiwiZXhwIjoxNTc1NjcyMTcxLCJpYXQiOjE1NzU2NTQxNzF9.2-cxplO_5lM5oyY3eCxth74Su4fs-ZFiyU1DJCghUmiCIiJtV_Q_W8YN0V1nHL2stl2euyfmHg0E5J7vbJ6GYQ\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXJlemFAZ21haWwuY29tIiwiZXhwIjoxNTc1NjcyMTcxLCJpYXQiOjE1NzU2NTQxNzF9.2-cxplO_5lM5oyY3eCxth74Su4fs-ZFiyU1DJCghUmiCIiJtV_Q_W8YN0V1nHL2stl2euyfmHg0E5J7vbJ6GYQ",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:4200/compra/26",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575658440835,
+			"name": "EditarCompra",
+			"description": "",
+			"collectionId": "5b113ed5-b333-f633-2f52-e2680e41a1bd",
+			"responses": [],
+			"rawModeData": "{\n\t\"id\": 26,\n\t\"codigo\": \"UD778\",\n\t\"valor\": 10000,\n\t\"data\": \"12/06/2019 12:05:23\",\n\t\"revendedor\": \n\t {\n\t\t    \"id\": 4,\n\t\t    \"nome\": \"Ricardo\",\n\t\t    \"cpf\": \"153.509.460-56\",\n\t\t    \"email\": \"ricardo@boticario.com\",\n\t\t    \"senha\": \"$2a$10$e6gxLeSmNmUu6jwIR913Xe2BsHyheRgL0PUbYcmWAFTxIgPRdnrlK\"\n\t}\n\t  \n}"
+		},
+		{
+			"id": "c179f655-68f7-8980-5f8a-baa211b297d2",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZWRyb0BnaWwuY29tIiwiZXhwIjoxNTc1NjYxNzg1LCJpYXQiOjE1NzU2NDM3ODV9.DRIyY336oU9y2FTCwXO2oIRlgRTpPxpAYYtgeVyfpHj7qw8P_AoQH4R5VBZ86g7Gqie7D0zKkZvAE_mr3tNxRw\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZWRyb0BnaWwuY29tIiwiZXhwIjoxNTc1NjYxNzg1LCJpYXQiOjE1NzU2NDM3ODV9.DRIyY336oU9y2FTCwXO2oIRlgRTpPxpAYYtgeVyfpHj7qw8P_AoQH4R5VBZ86g7Gqie7D0zKkZvAE_mr3tNxRw",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:4200/compra",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575643939475,
+			"name": "ListAllCompras",
+			"description": "",
+			"collectionId": "5b113ed5-b333-f633-2f52-e2680e41a1bd",
+			"responses": []
+		},
+		{
+			"id": "c38c07dc-8dc2-5351-0e89-42fb27920e7f",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyaWNhcmRvQGJvdGljYXJpby5jb20iLCJleHAiOjE1NzU2Nzc0MzUsImlhdCI6MTU3NTY1OTQzNX0.5IfsQqn3Qa9dQz40o6GX3U5bwHcZP0WEpiaLahXC8E4lkR_7aWZ4VyNpQuPEmWl4JyapRKvjfddnlKdvxLgA-A\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyaWNhcmRvQGJvdGljYXJpby5jb20iLCJleHAiOjE1NzU2Nzc0MzUsImlhdCI6MTU3NTY1OTQzNX0.5IfsQqn3Qa9dQz40o6GX3U5bwHcZP0WEpiaLahXC8E4lkR_7aWZ4VyNpQuPEmWl4JyapRKvjfddnlKdvxLgA-A",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:4200/cashback?cpf=1",
+			"queryParams": [
+				{
+					"key": "cpf",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575659626228,
+			"name": "GetAcumuloCashback",
+			"description": "",
+			"collectionId": "5b113ed5-b333-f633-2f52-e2680e41a1bd",
+			"responses": []
+		},
+		{
+			"id": "d7592dc1-180a-6f98-454d-f6ddf7044a7b",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyaWNhcmRvQGJvdGljYXJpby5jb20iLCJleHAiOjE1NzU2NzY0OTUsImlhdCI6MTU3NTY1ODQ5NX0.llm1PioRU-m2f7ZQqxPEm2FEd1Brn065oLxWnxg3UPpIFg5bM-smIHmXOg_552sH9FrZTO0LICmf4WOnFWH_HA\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyaWNhcmRvQGJvdGljYXJpby5jb20iLCJleHAiOjE1NzU2NzY0OTUsImlhdCI6MTU3NTY1ODQ5NX0.llm1PioRU-m2f7ZQqxPEm2FEd1Brn065oLxWnxg3UPpIFg5bM-smIHmXOg_552sH9FrZTO0LICmf4WOnFWH_HA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:4200/compra/2",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575658526337,
+			"name": "DeleteCompra",
+			"description": "",
+			"collectionId": "5b113ed5-b333-f633-2f52-e2680e41a1bd",
+			"responses": []
+		}
+	]
+}

@@ -10,4 +10,6 @@ public interface RevendedorRepository extends JpaRepository<Revendedor,Long> {
 
 	public Revendedor findByEmail(String email);
 
+	public Revendedor findByCpf(String cpf);
+
 }

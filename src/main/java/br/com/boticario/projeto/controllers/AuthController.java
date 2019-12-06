@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.boticario.projeto.dto.JwtRequest;
 import br.com.boticario.projeto.dto.JwtResponse;
+import br.com.boticario.projeto.entities.Revendedor;
+import br.com.boticario.projeto.repositories.RevendedorRepository;
 import br.com.boticario.projeto.security.JwtToken;
 import br.com.boticario.projeto.services.JwtUserDetailsService;
 import br.com.boticario.projeto.services.exception.DatabaseException;
@@ -31,6 +33,9 @@ public class AuthController {
 
     @Autowired
     private JwtUserDetailsService jwtUserDetailsService;
+    
+    @Autowired
+    private RevendedorRepository revendedorRepository;
 
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
@@ -53,6 +58,10 @@ public class AuthController {
 
         try {
 
+        	Revendedor revendedor = revendedorRepository.findByEmail(username);
+        	if(revendedor.getStatusPerfilRevendedor().getCode() == 2){
+        		throw new DatabaseException("Conta Inativa");
+        	}
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 
         } catch (DisabledException e) {

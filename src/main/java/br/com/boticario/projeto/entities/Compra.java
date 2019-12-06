@@ -1,7 +1,7 @@
 package br.com.boticario.projeto.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,9 +33,9 @@ public class Compra implements Serializable{
 	@NotNull
 	private Double valor;
 	
-	@Temporal(TemporalType.DATE)
-	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
-	private Date data;
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
+	private Calendar data;
 	
 	@ManyToOne
 	@JoinColumn(name="revendedor_cpf", referencedColumnName = "cpf")
@@ -52,7 +52,7 @@ public class Compra implements Serializable{
 
 	public Compra() {}
 	
-	public Compra(Long id, String codigo, Double valor, Date data, CompraStatus compraStatus, Double porcentagemCashback, Double valorCashback, Revendedor revendedor) {
+	public Compra(Long id, String codigo, Double valor, Calendar data, CompraStatus compraStatus, Double porcentagemCashback, Double valorCashback, Revendedor revendedor) {
 		super();
 		this.id = id;
 		this.codigo = codigo;
@@ -80,11 +80,11 @@ public class Compra implements Serializable{
 		this.valor = valor;
 	}
 
-	public Date getData() {
+	public Calendar getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(Calendar data) {
 		this.data = data;
 	}
 
@@ -126,59 +126,5 @@ public class Compra implements Serializable{
 		this.valorCashback = valorCashback;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-		result = prime * result + ((compraStatus == null) ? 0 : compraStatus.hashCode());
-		result = prime * result + ((data == null) ? 0 : data.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((revendedor == null) ? 0 : revendedor.hashCode());
-		result = prime * result + ((valor == null) ? 0 : valor.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Compra other = (Compra) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
-				return false;
-		} else if (!codigo.equals(other.codigo))
-			return false;
-		if (compraStatus == null) {
-			if (other.compraStatus != null)
-				return false;
-		} else if (!compraStatus.equals(other.compraStatus))
-			return false;
-		if (data == null) {
-			if (other.data != null)
-				return false;
-		} else if (!data.equals(other.data))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (revendedor == null) {
-			if (other.revendedor != null)
-				return false;
-		} else if (!revendedor.equals(other.revendedor))
-			return false;
-		if (valor == null) {
-			if (other.valor != null)
-				return false;
-		} else if (!valor.equals(other.valor))
-			return false;
-		return true;
-	}
 
 }
