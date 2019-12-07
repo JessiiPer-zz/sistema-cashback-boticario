@@ -1,6 +1,7 @@
 # Sistema de cashback para revendedores O Boticário
 
-A oportunidade proposta é criar um sistema de Cashback, onde o valor será disponibilizado como crédito para a próxima compra da revendedora no Boticário;
+A oportunidade proposta é criar um sistema de Cashback, onde o valor será disponibilizado como crédito para a próxima compra da revendedora no Boticário.
+
 Cashback quer dizer “dinheiro de volta”, e funciona de forma simples: o revendedor faz uma compra e seu benefício vem com a devolução de parte do dinheiro gasto.
 Sendo assim o Boticário quer disponibilizar um sistema para seus revendedores(as) cadastrarem suas compras e acompanhar o retorno de cashback de cada um.
 
@@ -9,7 +10,7 @@ Sendo assim o Boticário quer disponibilizar um sistema para seus revendedores(a
 * [Requisitos Não Funcionais](#requisitos-não-funcionais)
 * [Requisitos Funcionais](#requisitos-funcionais)
 * [Guia de instalação](#guia-de-instalação)
-* [Autoria](autoria)
+* [Autoria](#autoria)
 
 ## Requisitos Não Funcionais
 1. Linguagem de programação Java - Versão 11
